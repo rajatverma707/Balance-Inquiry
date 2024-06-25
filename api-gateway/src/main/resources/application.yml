@@ -1,0 +1,37 @@
+server:
+  port: 8084   
+  
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8762/eureka/
+     
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+        routes:
+        - id: ACCOUNT-SERVICE
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+          - Path=/accounts/**
+          
+        - id: CUSTOMER-SERVICE
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+          - Path=/customers/**
+          
+        - id: AUDIT-SERVICE
+          uri: lb://AUDIT-SERVICE
+          predicates:
+          - Path=/audit/**
+          
+        - id: BALANCE-INIT-SERVICE
+          uri: lb://BALANCE-INIT-SERVICE
+          predicates:
+          - Path=/api/**  
+              
+                     
+     
+             
