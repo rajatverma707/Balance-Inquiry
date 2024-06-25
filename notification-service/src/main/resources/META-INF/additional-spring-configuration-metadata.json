@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "notification.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.subject'"
+  },
+  {
+    "name": "notification.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.subject'"
+  },
+  {
+    "name": "notification.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.subject'"
+  },
+  {
+    "name": "notification.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.subject'"
+  },
+  {
+    "name": "notification.mail.subject",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.subject'"
+  },
+  {
+    "name": "notification.mail.message",
+    "type": "java.lang.String",
+    "description": "A description for 'notification.mail.message'"
+  }
+]}

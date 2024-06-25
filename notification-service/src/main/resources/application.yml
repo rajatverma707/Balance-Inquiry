@@ -1,0 +1,27 @@
+server:
+  port: 9094
+spring:
+  application:
+    name: notification-service
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: rajatverma707@gmail.com
+    password: atcj vaoc fgpy owzg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8762/eureka/            
+            
+notification:
+  mail:
+   subject: Account Balance Inquiry
+   message: Your account balance inquiry was successful. Your current balance is $5000."
+               

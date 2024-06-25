@@ -1,0 +1,19 @@
+server:
+  port: 9093
+spring:
+  application:
+    name: audit-service
+  datasource:
+    password: 123456
+    url: jdbc:mysql://localhost:3306/auditlogs
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8762/eureka/
