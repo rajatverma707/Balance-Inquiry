@@ -24,4 +24,11 @@ notification:
   mail:
    subject: Account Balance Inquiry
    message: Your account balance inquiry was successful. Your current balance is $5000."
+   
+logging:
+  file:
+    name: src/main/resources/script/notification_service.log
+    clean-history-on-start: true
+  level:
+    root: DEBUG       
                

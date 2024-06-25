@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.balanceenquiry.notification.model.NotificationRequest;
 import com.balanceenquiry.notification.service.NotificationService;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
@@ -21,6 +23,7 @@ public class NotificationController {
 
     @PostMapping("/send")
     public ResponseEntity<?> sendNotification(@RequestBody NotificationRequest request) {
+    	 log.info("*** Message String, NotificationController; send Notification *");
         notificationService.sendNotification(request);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

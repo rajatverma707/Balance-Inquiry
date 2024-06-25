@@ -21,6 +21,13 @@ management:
   endpoint:
     health:
       show-details: always
+
+logging:
+  file:
+    name: src/main/resources/script/balance_init_service.log
+    clean-history-on-start: true
+  level:
+    root: DEBUG        
       
 resilience4j:
   circuitbreaker:

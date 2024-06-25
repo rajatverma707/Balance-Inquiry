@@ -11,6 +11,9 @@ import com.balanceenquiry.audit.entity.AuditLog;
 import com.balanceenquiry.audit.entity.AuditLogRequest;
 import com.balanceenquiry.audit.repository.AuditLogRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class AuditService {
 
@@ -18,22 +21,17 @@ public class AuditService {
 	AuditLogRepository auditLogRepository;
 
     public String logAudit(AuditLogRequest auditLogRequest) {
+    	 log.info("*** Message String, AuditService; logAudit *");
     	AuditLog auditLog = new AuditLog();
-        // Assign a unique ID to the audit log entry
-        //auditLog.setId(++auditId);
         auditLog.setTimestamp( LocalDateTime.now());
         auditLog.setAction(auditLogRequest.getAction());
         auditLog.setAccountId(auditLogRequest.getAccountId());
-        // Log the audit entry (for demo purposes, print to console)
-        System.out.println("Audit Log: " + auditLog.toString());
-        // In a production environment, you would persist this audit log to a database or a log file.
-        // Example: auditLogRepository.save(auditLog);
         auditLogRepository.save(auditLog);
-
-         return "Audit log saved successfully";
+        return "Audit log saved successfully";
     }
     
     public  List<AuditLog>  getAllLogAuditEvent(){
+    	log.info("*** AuditLog List, AuditService; getAllLogAuditEvent *");
     	return auditLogRepository.findAll();
     }
 

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.balanceenquiry.dto.Account;
 import com.balanceenquiry.dto.BalanceRequest;
 import com.balanceenquiry.dto.BalanceResponse;
@@ -14,6 +13,9 @@ import com.balanceenquiry.service.BalanceInitService;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class BalanceInitController {
@@ -24,11 +26,14 @@ public class BalanceInitController {
 	    @PostMapping("balance/initiate")
 	    @CircuitBreaker(name = "AccountCicruitBreaker",fallbackMethod = "accountFallBack")
 	    public ResponseEntity<BalanceResponse> initiateBalanceCheck(@RequestBody BalanceRequest request) {
+	   	 log.info("*** BalanceResponse, BalanceInitController; initiateBalanceCheck *");
 	        BalanceResponse response = balanceInitService.fetchAccountBalance(request.getAccoundId());
 	        if (response != null) {
 	            return ResponseEntity.ok(response);
 	        } else {
+	        	log.info("No Balance found");
 	            return ResponseEntity.notFound().build();
+	           
 	        }
 	    }
 	    

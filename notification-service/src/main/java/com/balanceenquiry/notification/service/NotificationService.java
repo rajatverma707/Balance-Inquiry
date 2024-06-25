@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.balanceenquiry.notification.model.NotificationRequest;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class NotificationService {
 	
@@ -26,15 +29,16 @@ public class NotificationService {
 	
 	 public void sendNotification(NotificationRequest notificationRequest) {
 	        try {
+	        	 log.info("*** Message String, NotificationController; send Notification *");
 	            SimpleMailMessage mailMsg = new SimpleMailMessage();
 	            mailMsg.setFrom(emailSender);
 	            mailMsg.setTo(notificationRequest.getRecipient());
 	            mailMsg.setText(notificationRequest.getMessage());
 	            mailMsg.setSubject(emailSubject);
 	            javaMailSender.send(mailMsg);
-	           // log.info("Mail sent successfully");
+	            log.info("Mail sent successfully");
 	        }catch (MailException exception){
-	         //   log.debug("Failure occurred while sending email");
+	           log.debug("Failure occurred while sending email "+exception);
 	        }
 	    }
 	    

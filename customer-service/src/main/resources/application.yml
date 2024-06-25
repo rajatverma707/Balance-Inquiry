@@ -18,3 +18,10 @@ eureka:
   client:
     service-url:
      defaultZone: http://localhost:8762/eureka/    
+
+logging:
+  file:
+    name: src/main/resources/script/customer_service.log
+    clean-history-on-start: true
+  level:
+    root: DEBUG         

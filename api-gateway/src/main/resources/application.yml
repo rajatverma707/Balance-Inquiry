@@ -3,6 +3,7 @@ server:
   
 eureka:
   client:
+    fetch-registry: true
     service-url:
      defaultZone: http://localhost:8762/eureka/
      
@@ -31,6 +32,11 @@ spring:
           uri: lb://BALANCE-INIT-SERVICE
           predicates:
           - Path=/api/**  
+          
+        - id: AUTHORIZATION-SERVER
+          uri: lb://AUTHORIZATION-SERVER
+          predicates:
+          - Path=/auth/**   
               
                      
      

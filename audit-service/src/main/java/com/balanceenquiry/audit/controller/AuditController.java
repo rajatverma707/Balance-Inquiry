@@ -15,6 +15,9 @@ import com.balanceenquiry.audit.entity.AuditLog;
 import com.balanceenquiry.audit.entity.AuditLogRequest;
 import com.balanceenquiry.audit.service.AuditService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/audit")
 public class AuditController {
@@ -24,12 +27,14 @@ public class AuditController {
 
 	    @PostMapping("/log")
 	    public ResponseEntity<String> logAuditEvent(@RequestBody AuditLogRequest auditLog) {
+	    log.info("*** Message String, AuditController; logAuditEvent *");
 	     String statusMessage =  auditService.logAudit(auditLog);
 	        return ResponseEntity.ok(statusMessage);
 	    }
 	    
 	    @GetMapping("/logs")
-	    public ResponseEntity<?> getLogAuditEvent() {
+	    public ResponseEntity<List<AuditLog>> getLogAuditEvent() {
+	    	 log.info("*** AuditLog List, AuditController; getLogAuditEvent *");
 	    	List<AuditLog> list =auditService.getAllLogAuditEvent();
 	    	return ResponseEntity.ok(list);
 	    }
